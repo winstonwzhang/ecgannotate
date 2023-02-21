@@ -5,5 +5,8 @@ setup(name='ecgannotate',
       packages=['ecgannotate'],
       install_requires=[
            'numpy',
+           'scipy',
+           'pyqt',
+           'pyqtgraph',
            ],
       )
