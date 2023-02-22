@@ -13,8 +13,10 @@ from pyqtgraph.Qt import QtWidgets
 
 
 class UI(QtWidgets.QWidget):
+    '''Main GUI Class'''
 
     def __init__(self):
+        '''Initialize GUI window and parameters'''
         super(UI, self).__init__()
         self.win = QtWidgets.QMainWindow()
         
@@ -32,6 +34,7 @@ class UI(QtWidgets.QWidget):
         self.win.show()
 
     def setupUI(self, win):
+        '''Create initial dock components'''
         area = DockArea()
         win.setCentralWidget(area)
         win.resize(1000,500)
@@ -105,6 +108,7 @@ class UI(QtWidgets.QWidget):
         self.updateUI()
     
     def loadClicked(self):
+        '''ECG Load file button clicked'''
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
         fileName, _ = QtWidgets.QFileDialog.getOpenFileName(
@@ -113,9 +117,11 @@ class UI(QtWidgets.QWidget):
             "example_data",
             "Numpy Files (*.npy)", 
             options=options)
+        # check for null or empty file
         if fileName:
             raw = np.load(fileName)
-            self.ecg = raw.flatten()
+            if not np.isnan(raw).any():
+                self.ecg = raw.flatten()
             # clear preexisting annotations when loading new data
             self.table = []
             self.updateUI()
@@ -124,18 +130,21 @@ class UI(QtWidgets.QWidget):
         self.customMenu.popup (QtGui.QCursor.pos())
     
     def afClicked(self, event):
+        '''Atrial fibrillation label for this time section'''
         self.table.append({'start': self.idx, 
                            'end': self.idx+self.win_size, 
                            'type': 'AF'})
         self.updateUI()
     
     def vtClicked(self, event):
+        '''Ventricular Tachycardia label for this time section'''
         self.table.append({'start': self.idx, 
                            'end': self.idx+self.win_size, 
                            'type': 'VT'})
         self.updateUI()
     
     def updateUI(self):
+        '''Refresh plots and table'''
         self.w3_plot.setData(self.ecg[self.idx:self.idx+self.win_size])
         self.w4.setData(self.table)
 
