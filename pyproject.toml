@@ -1,0 +1,9 @@
+[ecgannotate]
+name = "ecgannotate"
+version = "0.1.0"
+dependencies = [
+    "numpy",
+    "scipy",
+	"PyQt5",
+	"pyqtgraph",
+]
