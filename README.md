@@ -14,4 +14,6 @@ Download latest .whl release
 
 - pip install ecgannotate-0.1.0-py3-none-any.whl
 
+Clone repository to local drive, navigate to the repository, and run
+
 - python ecgannotate/gui.py
