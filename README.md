@@ -6,7 +6,7 @@ Graphical User Interface for viewing and annotating Electrocardiogram (ECG) sign
 
 ## Unit Tests
 
-Load example data from the "example_data/" folder. Can handle empty/null/NaN arrays.
+Check the "tests/" folder for a markdown file with example GUI functionality.
 
 ## How to Run
 
