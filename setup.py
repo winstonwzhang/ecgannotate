@@ -9,4 +9,9 @@ setup(name='ecgannotate',
            'PyQt5',
            'pyqtgraph',
            ],
+      entry_points={
+        'console_scripts': [
+            'test_run = ecgannotate.gui:main',
+        ]
+      },
       )
