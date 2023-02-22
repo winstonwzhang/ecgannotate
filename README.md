@@ -10,6 +10,8 @@ Load example data from the "example_data/" folder. Can handle empty/null/NaN arr
 
 ## How to Run
 
-pip install ecgannotate-0.1.0-py3-none-any.whl
+Download latest .whl release
 
-python bin/runGUI.py
+- pip install ecgannotate-0.1.0-py3-none-any.whl
+
+- python bin/runGUI.py
