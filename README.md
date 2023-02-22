@@ -7,3 +7,9 @@ Graphical User Interface for viewing and annotating Electrocardiogram (ECG) sign
 ## Unit Tests
 
 Load example data from the "example_data/" folder. Can handle empty/null/NaN arrays.
+
+## How to Run
+
+pip install ecgannotate-0.1.0-py3-none-any.whl
+
+python bin/runGUI.py
