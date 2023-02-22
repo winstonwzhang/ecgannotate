@@ -150,6 +150,13 @@ class UI(QtWidgets.QWidget):
 
 
 
+def runGUI():
+    pg.setConfigOptions(antialias=True)
+    app = pg.mkQApp("Plotting Example")
+    ui = UI()
+    pg.exec()
+
+
 
 if __name__ == '__main__':
     pg.setConfigOptions(antialias=True)
