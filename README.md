@@ -20,4 +20,4 @@ Clone repository to local drive, navigate to the repository, and run
 
 Expected Result: The GUI interface will show up on screen.
 
-For example functionality and loading ECG signals from the example_data/ folder, check tests/test.md
+For example functionality and loading ECG signals from the example_data/ folder, check tests/gui_tests.md
