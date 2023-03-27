@@ -17,3 +17,7 @@ Download latest .whl release
 Clone repository to local drive, navigate to the repository, and run
 
 - python ecgannotate/gui.py
+
+Expected Result: The GUI interface will show up on screen.
+
+For example functionality and loading ECG signals from the example_data/ folder, check tests/test.md
