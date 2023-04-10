@@ -8,6 +8,7 @@ setup(name='ecgannotate',
            'scipy',
            'PyQt5',
            'pyqtgraph',
+           'py-ecg-detectors',
            ],
       entry_points={
         'console_scripts': [
