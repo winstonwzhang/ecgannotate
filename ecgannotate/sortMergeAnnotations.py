@@ -1,45 +1,24 @@
 def processAnnotations(inputList):
-    '''
-    Description
-    -----------
-    Functionality:
-    1. sort the user-added annotations by starting index
-    2. remove identical annotations (same start, end, and type)
-    3. merge annotations that are the same type if they overlap with
-       each other in the time domain.
 
-    Parameters
-    ----------
-    inputList : list of dict
-        e.g. [{'start': 23, 'end': 48, 'type': 'AF'},
-              {'start': 23, 'end': 48, 'type': 'AF'},
-              {'start': 45, 'end': 75, 'type': 'AF'}]
-
-    Returns
-    -------
-    outputList : list of dict
-        e.g. [{'start': 23, 'end': 75, 'type': 'AF'}]
-
-    '''
-    # Step 1: sort annotations by starting index
-    inputList = sorted(inputList, key=lambda x: x['start'])
-
-    # Step 2: remove duplicate annotations
+    # Step 1: remove duplicate annotations
     uniqueList = []
     for annotation in inputList:
         if annotation not in uniqueList:
             uniqueList.append(annotation)
+    
+    # Step 2: sort annotations by type first, starting index second
+    sortedList = sorted(uniqueList, key=lambda x: (x['type'], x['start']))
 
     # Step 3: merge overlapping annotations of the same type
     outputList = []
     i = 0
-    while i < len(uniqueList):
+    while i < len(sortedList):
         j = i + 1
-        while j < len(uniqueList) and uniqueList[j]['type'] == uniqueList[i]['type'] and uniqueList[j]['start'] <= uniqueList[i]['end']:
+        while j < len(sortedList) and sortedList[j]['type'] == sortedList[i]['type'] and sortedList[j]['start'] <= sortedList[i]['end']:
             # merge overlapping annotations of the same type
-            uniqueList[i]['end'] = max(uniqueList[i]['end'], uniqueList[j]['end'])
+            sortedList[i]['end'] = max(sortedList[i]['end'], sortedList[j]['end'])
             j += 1
-        outputList.append(uniqueList[i])
+        outputList.append(sortedList[i])
         i = j
 
     return outputList
