@@ -1,1 +1,1 @@
-import ecgannotate.gui
+__all__ = ['ecg', 'gui', 'sortMergeAnnotations']
