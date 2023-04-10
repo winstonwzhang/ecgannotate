@@ -1,7 +1,7 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='ecgannotate',
-      version='0.1.0',
+      version='0.2.0',
       packages=['ecgannotate'],
       install_requires=[
            'numpy',
@@ -12,7 +12,7 @@ setup(name='ecgannotate',
            ],
       entry_points={
         'console_scripts': [
-            'test_run = ecgannotate.gui:main',
-        ]
-      },
+            'ecgannotate=ecgannotate.gui:runGUI',
+        ],
+        },
       )

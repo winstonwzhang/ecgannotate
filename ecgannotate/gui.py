@@ -12,8 +12,9 @@ from pyqtgraph.dockarea.Dock import Dock
 from pyqtgraph.dockarea.DockArea import DockArea
 from pyqtgraph.Qt import QtWidgets
 
-import ecg
-import sortMergeAnnotations
+
+from .ecg import findPeaks, calculateHR
+from .sortMergeAnnotations import processAnnotations
 
 
 class UI(QtWidgets.QWidget):
@@ -167,7 +168,7 @@ class UI(QtWidgets.QWidget):
             if not np.isnan(raw).any():
                 self.ecg = raw.flatten()
                 self.len = len(self.ecg)
-                self.peaks = np.array(ecg.findPeaks(self.sr, self.ecg))
+                self.peaks = np.array(findPeaks(self.sr, self.ecg))
                 self.max_win = self.len // self.win_size
                 self.winBox.setRange(0, self.max_win-1)
             # clear preexisting annotations when loading new data
@@ -178,7 +179,7 @@ class UI(QtWidgets.QWidget):
     def saveClicked(self, event):
         if len(self.table) != 0:
             # sort and merge annotations
-            new_table = sortMergeAnnotations.sortMergeAnnotations(self.table)
+            new_table = processAnnotations(self.table)
             # Show a file dialog to choose where to save the CSV file
             options = QtWidgets.QFileDialog.Options()
             options |= QtWidgets.QFileDialog.DontUseNativeDialog
@@ -251,7 +252,7 @@ class UI(QtWidgets.QWidget):
         
         if self.peaks.size != 0:
             self.cur_peaks = self.peaks[(self.peaks >= w_start) & (self.peaks <= w_end)]
-            new_hr = ecg.calculateHR(len(self.cur_peaks), self.sr, self.win_size)
+            new_hr = calculateHR(len(self.cur_peaks), self.sr, self.win_size)
             # update statistics display
             self.winNum.setText('Current window: ' + str(self.cur_win) + ' out of ' + str(self.max_win-1))
             self.pkNum.setText('Number of R peaks detected: ' + str(len(self.cur_peaks)))

@@ -1,4 +1,4 @@
-def sortMergeAnnotations(inputList):
+def processAnnotations(inputList):
     '''
     Description
     -----------
