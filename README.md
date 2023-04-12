@@ -18,7 +18,7 @@ Install the wheel file on your local machine. It is recommended to do pip instal
 
 Clone this repository to your local machine using
 
-- git clone git@github.com:winstonwzhang/ecgannotate.git
+- git clone https://github.com/winstonwzhang/ecgannotate
 
 and navigate to the root directory.
 
