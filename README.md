@@ -14,6 +14,9 @@ Download latest .whl release from the "Releases" section of this repository.
 
 Install the wheel file on your local machine. It is recommended to do pip install within a virtual environment such as conda.
 
+- conda create --name ecgannotate
+- conda activate ecgannotate
+- conda install pip
 - pip install ecgannotate-0.2.0-py3-none-any.whl
 
 Clone this repository to your local machine using
