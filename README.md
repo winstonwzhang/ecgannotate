@@ -6,7 +6,7 @@ Graphical User Interface for viewing and annotating Electrocardiogram (ECG) sign
 
 ## Unit Tests
 
-Check the "tests/" folder for a markdown file with example GUI functionality.
+Check the "tutorials/" folder for a markdown file with example GUI functionality.
 
 ## How to Run
 
